@@ -31,8 +31,10 @@ class PointsController {
             })
         }
 
-        //SELECT * FROM items JOIN point_items ON items.id = point_items.item_id WHERE point_items.point)ud = { id }
-        const items = await knex('items').join('point_items','items.id', '=','point_items.item_id').where('point_items.point_id',id).select('items.title'); 
+        const items = await knex('items').
+            join('point_items','items.id', '=','point_items.item_id').
+            where('point_items.point_id',id).
+            select('items.title'); 
 
         return res.json({point , items})
     }
